@@ -760,6 +760,45 @@
                     return -1;
 
                 },
+                
+                                selectedCount: function () {
+                    var O = this;
+                    var count = 0;
+
+                    O.E.find('option:not(:disabled,:hidden)')
+                        .each(function (ix, e) {
+                            var is_selected = e.selected;
+                            if (is_selected) {
+                                count++;
+                            }
+                        });
+
+                    return count;
+                },
+
+                checkSelectedElement: function (val) {
+                    var O = this;
+                    var options = O.E.find('option');
+                    for (var x in options) {
+                        if (options[x].value === val) {
+                            var is_selected = options[x].selected;
+                            return is_selected;
+                        }
+                    }
+
+                    return false;
+                },
+                findElement: function(val) {
+                    var O = this;
+                    var options = O.E.find('option');
+                    for (var x in options) {
+                        if (options[x].value === val) {
+                            return options[x];
+                        }
+                    }
+
+                    return -1;
+                },
 
                 //## Select an item at a given index.
                 selectItem: function (i) { this.toggSel(true, i); },
